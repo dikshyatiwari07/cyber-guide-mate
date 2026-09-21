@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CheckMessageRouteImport } from './routes/check-message'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as LearnRouteImport } from './routes/learn'
+import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as SafetyTipsRouteImport } from './routes/safety-tips'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckMessageRoute = CheckMessageRouteImport.update({
+  id: '/check-message',
+  path: '/check-message',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafetyTipsRoute = SafetyTipsRouteImport.update({
+  id: '/safety-tips',
+  path: '/safety-tips',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/check-message': typeof CheckMessageRoute
+  '/help': typeof HelpRoute
+  '/learn': typeof LearnRoute
+  '/quiz': typeof QuizRoute
+  '/safety-tips': typeof SafetyTipsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/check-message': typeof CheckMessageRoute
+  '/help': typeof HelpRoute
+  '/learn': typeof LearnRoute
+  '/quiz': typeof QuizRoute
+  '/safety-tips': typeof SafetyTipsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/check-message': typeof CheckMessageRoute
+  '/help': typeof HelpRoute
+  '/learn': typeof LearnRoute
+  '/quiz': typeof QuizRoute
+  '/safety-tips': typeof SafetyTipsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/check-message'
+    | '/help'
+    | '/learn'
+    | '/quiz'
+    | '/safety-tips'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/check-message'
+    | '/help'
+    | '/learn'
+    | '/quiz'
+    | '/safety-tips'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/check-message'
+    | '/help'
+    | '/learn'
+    | '/quiz'
+    | '/safety-tips'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  CheckMessageRoute: typeof CheckMessageRoute
+  HelpRoute: typeof HelpRoute
+  LearnRoute: typeof LearnRoute
+  QuizRoute: typeof QuizRoute
+  SafetyTipsRoute: typeof SafetyTipsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/check-message': {
+      id: '/check-message'
+      path: '/check-message'
+      fullPath: '/check-message'
+      preLoaderRoute: typeof CheckMessageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safety-tips': {
+      id: '/safety-tips'
+      path: '/safety-tips'
+      fullPath: '/safety-tips'
+      preLoaderRoute: typeof SafetyTipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  CheckMessageRoute: CheckMessageRoute,
+  HelpRoute: HelpRoute,
+  LearnRoute: LearnRoute,
+  QuizRoute: QuizRoute,
+  SafetyTipsRoute: SafetyTipsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
